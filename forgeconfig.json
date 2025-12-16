@@ -1,0 +1,27 @@
+{
+  "multiple_function_colors": true,
+  "urls": [
+    "github:tryforge/forgescript#dev",
+    "github:tryforge/forgedb"
+  ],
+  "custom_functions": [
+    {
+      "name": "$getRequiredXp",
+      "description": "Calculates how much XP is required to level up.",
+      "params": [
+        {
+          "name": "level",
+          "description": "Current level (>= 1)",
+          "required": true,
+          "type": "Number"
+        },
+        {
+          "name": "currentXp",
+          "description": "XP already earned in this level",
+          "required": false,
+          "type": "Number"
+        }
+      ]
+    }
+  ]
+}

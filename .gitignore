@@ -1,0 +1,10 @@
+/node_modules/
+/database/
+.env
+.vscode/
+dist
+docs
+bun.lock
+.cache
+pnpm-lock.yaml
+pnpm-workspace.yaml
