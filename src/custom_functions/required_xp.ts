@@ -25,7 +25,8 @@ export default new ForgeFunction({
         BASE_XP * Math.pow(GROWTH_RATE, $env[level] - 1)
       );
     
-      Math.max(0, xpForNextLevel - $env[current_xp] || 0);
+      const currentXp = Number($env[current_xp] || 0)
+      Math.max(0, xpForNextLevel - currentXp)
   ]]
   `
 })
