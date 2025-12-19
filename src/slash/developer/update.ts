@@ -16,7 +16,8 @@ export default new ApplicationCommand({
     ]
   },
   code: `
-    $onlyIf[$authorID==$botOwnerID==true;$ephemeral You cannot use this command]
+    $onlyIf[$authorID==$botOwnerID;$ephemeral You cannot use this command]
+    $defer
     $let[AppCount;$applicationCommandCount]
     $let[PrefixCount;$commandCount]
     $updateApplicationCommands
