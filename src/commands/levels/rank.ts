@@ -8,8 +8,8 @@ export default new BaseCommand({
   allowBots: false,
   code: `
     $let[user;$default[$mentioned[0];$authorID]]
-    $let[level;$getMemberVar[level;$get[user];$guildID]]
-    $let[xp;$getMemberVar[xp;$get[user];$guildID]]
+    $let[level;$getMemberVar[level;$get[user];$guildID;1]]
+    $let[xp;$getMemberVar[xp;$get[user];$guildID;0]]
     $let[req;$getRequiredXp[$get[level]]]
 
     $let[card;$djsEval[

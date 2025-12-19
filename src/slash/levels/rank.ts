@@ -22,8 +22,8 @@ export default new ApplicationCommand({
   },
   code: `
     $let[user;$default[$option[user];$authorID]]
-    $let[level;$getMemberVar[level;$get[user];$guildID]]
-    $let[xp;$getMemberVar[xp;$get[user];$guildID]]
+    $let[level;$getMemberVar[level;$get[user];$guildID;1]]
+    $let[xp;$getMemberVar[xp;$get[user];$guildID;0]]
     $let[req;$getRequiredXp[$get[level]]]
 
     $let[card;$djsEval[
