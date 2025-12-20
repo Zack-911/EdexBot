@@ -17,16 +17,43 @@ export default new ForgeFunction({
     }
   ],
   code: `
-    $return[$djsEval[  
+    $return[$djsEval[(() => {
       const BASE_XP = 100;
-      const GROWTH_RATE = 1.25;
+      const GROWTH_RATE = 1.10;
 
-      const xpForNextLevel = Math.floor(
-        BASE_XP * Math.pow(GROWTH_RATE, $env[level] - 1)
-      );
-    
-      const currentXp = Number($env[current_xp] || 0)
-      Math.max(0, xpForNextLevel - currentXp)
-  ]]
+      let level = Number($env[level]);
+      const currentXpInput = $env[current_xp];
+      
+      if (currentXpInput === undefined || currentXpInput === null || currentXpInput === "") {
+        return Math.floor(
+          BASE_XP * Math.pow(GROWTH_RATE, level - 1)
+        );
+      }
+
+      let currentXp = Number(currentXpInput);
+      if (isNaN(currentXp)) {
+        return Math.floor(
+          BASE_XP * Math.pow(GROWTH_RATE, level - 1)
+        );
+      }
+
+      let levelsGained = 0;
+      
+      while (true) {
+        const xpForNextLevel = Math.floor(
+          BASE_XP * Math.pow(GROWTH_RATE, level - 1)
+        );
+        
+        if (currentXp >= xpForNextLevel) {
+          currentXp -= xpForNextLevel;
+          level++;
+          levelsGained++;
+        } else {
+          break;
+        }
+      }
+
+      return level + "," + currentXp + "," + (levelsGained > 0);
+    })()]]
   `
 })

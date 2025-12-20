@@ -23,6 +23,54 @@
           "type": "Number"
         }
       ]
+    },
+    {
+      "name": "$generateRankCard",
+      "description": "Generates a rank card image.",
+      "params": [
+        {
+          "name": "user",
+          "description": "The user to generate the card for",
+          "required": true,
+          "type": "String"
+        },
+        {
+          "name": "level",
+          "description": "The level to display",
+          "required": true,
+          "type": "Number"
+        },
+        {
+          "name": "xp",
+          "description": "The current XP to display",
+          "required": true,
+          "type": "Number"
+        },
+        {
+          "name": "req",
+          "description": "The required XP to display",
+          "required": true,
+          "type": "Number"
+        }
+      ]
+    },
+    {
+      "name": "$generateLevelUpCard",
+      "description": "Generates a level-up card image.",
+      "params": [
+        {
+          "name": "user",
+          "description": "The user to generate the card for",
+          "required": true,
+          "type": "String"
+        },
+        {
+          "name": "level",
+          "description": "The new level reached",
+          "required": true,
+          "type": "Number"
+        }
+      ]
     }
   ]
 }
