@@ -80,7 +80,7 @@ export default new ApplicationCommand({
         // ---- Username ----
         const usernameY = avatarY + avatarSize * 0.35;
         ctx.fillStyle = "#ffffff";
-        ctx.font = \`bold \${height*0.12}px Sans\`;
+        ctx.font = 'bold ' + height*0.12 + 'px Sans';
         ctx.fillText("$username[$get[user]]", contentX, usernameY);
       
         // Subtle separator
@@ -92,7 +92,7 @@ export default new ApplicationCommand({
         ctx.stroke();
       
         // ---- Level ----
-        ctx.font = \`\${height*0.075}px Sans\`;
+        ctx.font = 'height*0.075' + 'px Sans';
         ctx.fillStyle = "rgba(255,255,255,0.85)";
         ctx.fillText("LEVEL $get[level]", contentX, usernameY + lineGap);
       
