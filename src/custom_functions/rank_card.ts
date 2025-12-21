@@ -123,5 +123,6 @@ export default new ForgeFunction({
     
       return canvas.toBuffer("image/png").toString("base64");
     })()]]
+
   `
 })

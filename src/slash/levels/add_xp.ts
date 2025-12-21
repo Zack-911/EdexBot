@@ -1,14 +1,30 @@
-import { BaseCommand } from "@tryforge/forgescript";
+import { ApplicationCommand } from "@tryforge/forgescript";
+import { ApplicationCommandOptionType, ApplicationIntegrationType, InteractionContextType } from "discord.js";
 
-export default new BaseCommand({
-  name: "addxp",
-  type: "messageCreate",
+export default new ApplicationCommand({
+  data: {
+    name: "add_xp",
+    description: "Add XP to a server member",
+    options: [
+      {
+        name: "target",
+        description: "The user to add the XP to",
+        required: true,
+        type: ApplicationCommandOptionType.User
+      },
+      {
+        name: "xp",
+        description: "The amount of XP add",
+        required: true,
+        type: ApplicationCommandOptionType.Number
+      }
+    ]
+  },
   code: `
-    $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];You need ManageGuild permission to use this command $deleteIn[5s]]
-    $onlyIf[$and[$mentioned[0]!=;$message[1]!=;$isNumber[$message[1]]==true]==true;Incorrect Usage: \`.addxp <user> <amount>\` $deleteIn[5s]]
+    $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];$ephemeral You need ManageGuild permission to use this command $deleteIn[5s]]
     
-    $let[target;$mentioned[0]]
-    $let[amount;$message[1]]
+    $let[target;$option[target]]
+    $let[amount;$option[xp]]
     
     $let[currentXP;$getMemberVar[xp;$get[target];$guildID;0]]
     $let[newXP;$math[$get[currentXP] + $get[amount]]]
@@ -32,4 +48,4 @@ export default new BaseCommand({
       Added $get[amount] XP to $userDisplayName[$get[target]]
     ]
   `
-});
+})
