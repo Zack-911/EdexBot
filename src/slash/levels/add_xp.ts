@@ -18,7 +18,9 @@ export default new ApplicationCommand({
         required: true,
         type: ApplicationCommandOptionType.Number
       }
-    ]
+    ],
+    integration_types: [ApplicationIntegrationType.GuildInstall],
+    contexts: [InteractionContextType.Guild]
   },
   code: `
     $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];$ephemeral You need ManageGuild permission to use this command $deleteIn[5s]]
