@@ -1,11 +1,21 @@
 import { BaseCommand } from "@tryforge/forgescript";
+import type { Command } from "src/types";
 
 export default new BaseCommand({
   name: "rank",
   aliases: ["r"],
   type: "messageCreate",
+  description: "View user rank",
+  module: "leveling",
+  version: "1.0.0",
+  params: [
+    {
+      name: "user",
+      description: "The user to view rank of",
+      required: false,
+    }
+  ],
   guildOnly: true,
-  allowBots: false,
   code: `
     $let[user;$default[$mentioned[0];$authorID]]
     $let[level_db;$getMemberVar[level;$get[user];$guildID;1]]
@@ -28,4 +38,4 @@ export default new BaseCommand({
       $addTextDisplay[-# Level $get[level] | XP: $get[xp]/$get[req]]
     ;#9A2FF3]
 `
-});
+} satisfies Command);

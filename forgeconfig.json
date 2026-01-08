@@ -1,9 +1,0 @@
-{
-  "multiple_function_colors": true,
-  "urls": [
-    "github:tryforge/forgescript#dev",
-    "github:tryforge/forgedb",
-    "github:tryforge/forgecanvas"
-  ],
-  "custom_functions_path": "src/custom_functions"
-}

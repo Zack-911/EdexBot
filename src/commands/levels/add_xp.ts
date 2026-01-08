@@ -1,8 +1,24 @@
 import { BaseCommand } from "@tryforge/forgescript";
+import type { Command } from "src/types";
 
 export default new BaseCommand({
   name: "addxp",
   type: "messageCreate",
+  description: "Add XP to a user",
+  module: "leveling",
+  version: "1.0.0",
+  params: [
+    {
+      name: "user",
+      description: "The user to add XP to",
+      required: true,
+    },
+    {
+      name: "amount",
+      description: "The amount of XP to add",
+      required: true,
+    }
+  ],
   code: `
     $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];You need ManageGuild permission to use this command $deleteIn[5s]]
     $onlyIf[$and[$mentioned[0]!=;$message[1]!=;$isNumber[$message[1]]==true]==true;Incorrect Usage: \`.addxp <user> <amount>\` $deleteIn[5s]]
@@ -32,4 +48,4 @@ export default new BaseCommand({
       Added $get[amount] XP to $userDisplayName[$get[target]]
     ]
   `
-});
+} satisfies Command);

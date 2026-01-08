@@ -1,8 +1,12 @@
 import { BaseCommand } from "@tryforge/forgescript";
+import type { Command } from "src/types";
 
 export default new BaseCommand({
   name: "update",
   type: "messageCreate",
+  description: "Update commands",
+  module: "dev",
+  version: "1.0.0",
   code: `
     $onlyIf[$authorID==$botOwnerID]
     $let[AppCount;$applicationCommandCount]
@@ -24,4 +28,4 @@ export default new BaseCommand({
     ]
     $logger[Info;Updated Commands]
   `
-})
+} satisfies Command)

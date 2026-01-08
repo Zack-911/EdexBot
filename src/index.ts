@@ -6,39 +6,39 @@ import * as dotenv from "dotenv"
 dotenv.config()
 
 const db: ForgeDB = new ForgeDB({
-    type: "sqlite",
-    events: [
-        "connect",
-        "variableCreate",
-        "variableUpdate",
-        "variableDelete",
-    ],
+  type: "sqlite",
+  events: [
+    "connect",
+    "variableCreate",
+    "variableUpdate",
+    "variableDelete",
+  ],
 })
 
 const client: ForgeClient = new ForgeClient({
-    prefixes: [
-        ".",
-        "<@$botID>",
-        "<@!$botID>",
-    ],
-    intents: [
-        "Guilds",
-        "GuildMessages",
-        "GuildMembers",
-        "MessageContent",
-        "DirectMessages",
-        "DirectMessageReactions",
-        "DirectMessageTyping",
-    ],
-    events: [
-        "clientReady",
-        "messageCreate",
-        "interactionCreate",
-    ],
-    extensions: [
-        db,
-        new ForgeCanvas(),
-    ],
+  prefixes: [
+    ".",
+    "<@$botID>",
+    "<@!$botID>",
+  ],
+  intents: [
+    "Guilds",
+    "GuildMessages",
+    "GuildMembers",
+    "MessageContent",
+    "DirectMessages",
+    "DirectMessageReactions",
+    "DirectMessageTyping",
+  ],
+  events: [
+    "clientReady",
+    "messageCreate",
+    "interactionCreate",
+  ],
+  extensions: [
+    db,
+    new ForgeCanvas(),
+  ],
 })
 client.functions.load("dist/custom_functions")
 client.commands.load("dist/commands")
