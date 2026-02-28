@@ -1,0 +1,8 @@
+{
+  "extensions": [
+    "github:tryforge/forgescript#main",
+    "github:tryforge/forgedb#main",
+    "github:tryforge/forgecanvas#main"
+  ],
+  "custom_functions_path": "./src/custom_functions/"
+} 

@@ -18,7 +18,7 @@ export default new BaseCommand({
       description: "The amount of XP to add",
       required: true,
     }
-  ],
+  ], 
   code: `
     $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];You need ManageGuild permission to use this command $deleteIn[5s]]
     $onlyIf[$and[$mentioned[0]!=;$message[1]!=;$isNumber[$message[1]]==true]==true;Incorrect Usage: \`.addxp <user> <amount>\` $deleteIn[5s]]

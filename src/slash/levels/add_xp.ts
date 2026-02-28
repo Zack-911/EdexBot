@@ -24,22 +24,21 @@ export default new ApplicationCommand({
   },
   code: `
     $onlyIf[$hasPerms[$guildID;$authorID;ManageGuild];$ephemeral You need ManageGuild permission to use this command $deleteIn[5s]]
-    
+
     $let[target;$option[target]]
     $let[amount;$option[xp]]
-    
+
     $let[currentXP;$getMemberVar[xp;$get[target];$guildID;0]]
     $let[newXP;$math[$get[currentXP] + $get[amount]]]
-    
+
     $let[level;$getMemberVar[level;$get[target];$guildID;1]]
-    
+
     $let[result;$getRequiredXp[$get[level];$get[newXP]]]
-    
+
     $textSplit[$get[result];,]
     $let[new_level;$splitText[0]]
     $let[remaining_xp;$splitText[1]]
     $let[has_leveled_up;$splitText[2]]
-    
     $if[$get[has_leveled_up]==true;
       $setMemberVar[xp;$get[remaining_xp];$get[target];$guildID]
       $setMemberVar[level;$get[new_level];$get[target];$guildID]

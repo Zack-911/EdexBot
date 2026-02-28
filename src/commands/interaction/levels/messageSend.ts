@@ -14,13 +14,12 @@ export default new BaseCommand({
     $textSplit[$get[result];,]
     $let[new_level;$splitText[0]]
     $let[remaining_xp;$splitText[1]]
-    $let[has_leveled_up;$splitText[2]]
-
+    
     $if[$get[has_leveled_up]==true;
       $setMemberVar[xp;$get[remaining_xp];$authorID;$guildID]
-      $setMemberVar[level;$get[new_level];$authorID;$guildID]
+      $setMemberVar[level;$get[new_level];$authorID;$guildID] 
       $let[image;$generateLevelUpCard[$authorID;$get[new_level]]]
-      $attachment[$get[image];levelup.png;true;base64]
+      $attachment[$get[image\];levelup.png;true;base64]
       $deleteIn[10s]
     ]
   `
